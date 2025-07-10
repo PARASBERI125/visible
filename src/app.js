@@ -21,8 +21,16 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" })); //if data coming
 app.use(express.static("public")); //used to store some public files or images on our server itself
 //where we are using app.use it means we are using some middleware
 app.use(cookieParser());
-export default app;
+
 //a middleware is always in between frontend and server because we dont have to serve every user and waste computational load
 //EG-if someone is requesting instagram but he is not logged in only then why will we serve him the home page,thats where middleware comes in action and it checks
 //similarly there can be multiple middlewares to check and flag it or give it to the next middleware eg- if he is user or admin etc etc
 //(err,req,res,next) this next is flag
+//routes import
+import userRoutes from "./routes/user.routes.js";
+
+//routes declaration
+app.use("/api/v1/users", userRoutes); //all the user routes will be prefixed with /api/v1/users
+
+//https://localhost:8000/api/v1/users/register or login
+export default app;

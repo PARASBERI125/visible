@@ -11,4 +11,4 @@ function asyncHandler(fn) {
   }; //instead of writing try catch at every place where async await function is being used we once and for all channelize all the errors and resolve it by passing that function to asynchandler
 }
 
-export default asyncHandler;
+export { asyncHandler };
